@@ -1,17 +1,13 @@
 package config;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import io.cucumber.testng.FeatureWrapper;
-import io.cucumber.testng.PickleWrapper;
-import io.cucumber.testng.TestNGCucumberRunner;
+
 
 
 
@@ -22,10 +18,11 @@ import io.cucumber.testng.TestNGCucumberRunner;
         glue = {"StepDefinations"},
         plugin = {
                 "pretty"
-               , "html:target/cucumber-reports/cucumber-pretty"
+               , "html:target/cucumber-reports.html"
                , "json:target/cucumber-reports/CucumberTestReport.json"
-              ,  "rerun:target/cucumber-reports/rerun.txt"}
-//       , tags = "@Ignore"
+              ,  "rerun:target/cucumber-reports/rerun.txt"
+              }
+		//       , tags = "@Ignore"
        , monochrome = true
         		)
 
@@ -61,7 +58,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     @AfterClass(alwaysRun = true)
     public void tearDownClass() {
 //        testNGCucumberRunner.finish();
-        driver.close();
+    	driver.close();
     	driver.quit();
     }
     
