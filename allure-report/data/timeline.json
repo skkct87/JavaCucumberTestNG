@@ -1,0 +1,25 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "DESKTOP-7PHU205",
+    "children" : [ {
+      "name" : "19312@DESKTOP-7PHU205.main(1)",
+      "children" : [ {
+        "name" : "Runs Cucumber Scenarios",
+        "uid" : "9ebbff6932f0654c",
+        "parentUid" : "09d83c5c8cbb5dc165461300d8b8ec52",
+        "status" : "passed",
+        "time" : {
+          "start" : 1645443219251,
+          "stop" : 1645443219429,
+          "duration" : 178
+        },
+        "flaky" : false,
+        "parameters" : [ "\"Want to search a company\"", "\"Optional[Basic serach on Google]\"" ]
+      } ],
+      "uid" : "09d83c5c8cbb5dc165461300d8b8ec52"
+    } ],
+    "uid" : "97c5e9239c5bf509c1468df527eb2670"
+  } ]
+}

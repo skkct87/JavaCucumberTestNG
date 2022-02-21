@@ -1,0 +1,113 @@
+{
+  "uid" : "e981f48910b59b09",
+  "name" : "Runs Cucumber Scenarios",
+  "fullName" : "io.cucumber.testng.AbstractTestNGCucumberTests.runScenario",
+  "historyId" : "bd21114f63d67e478cf3e720b6508d55",
+  "time" : {
+    "start" : 1645443193354,
+    "stop" : 1645443193443,
+    "duration" : 89
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "setUpClass",
+    "time" : {
+      "start" : 1645443188119,
+      "stop" : 1645443189016,
+      "duration" : 897
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "setUpClass",
+    "time" : {
+      "start" : 1645443189017,
+      "stop" : 1645443193324,
+      "duration" : 4307
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "tearDownClass",
+    "time" : {
+      "start" : 1645443193503,
+      "stop" : 1645443194138,
+      "duration" : 635
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "StepDefinations.basicgooglesearchsteps"
+  }, {
+    "name" : "testClass",
+    "value" : "StepDefinations.basicgooglesearchsteps"
+  }, {
+    "name" : "testMethod",
+    "value" : "runScenario"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Suite"
+  }, {
+    "name" : "suite",
+    "value" : "Test"
+  }, {
+    "name" : "subSuite",
+    "value" : "StepDefinations.basicgooglesearchsteps"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-7PHU205"
+  }, {
+    "name" : "thread",
+    "value" : "3548@DESKTOP-7PHU205.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "\"Want to search a company\""
+  }, {
+    "name" : "arg1",
+    "value" : "\"Optional[Basic serach on Google]\""
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "e981f48910b59b09.json",
+  "parameterValues" : [ "\"Want to search a company\"", "\"Optional[Basic serach on Google]\"" ]
+}

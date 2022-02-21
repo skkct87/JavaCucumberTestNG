@@ -3,8 +3,12 @@ package config;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import io.cucumber.core.gherkin.Step;
+import io.cucumber.java.AfterStep;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
@@ -13,14 +17,16 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
+		dryRun = true,
 		publish = true,
         features = "src\\test\\java\\Features\\",
         glue = {"StepDefinations"},
-        plugin = {
-                "pretty"
-               , "html:target/cucumber-reports.html"
-               , "json:target/cucumber-reports/CucumberTestReport.json"
-              ,  "rerun:target/cucumber-reports/rerun.txt"
+        plugin = {"pretty"
+//                "pretty:target/cucumber-pretty.txt" 
+//               , "html:target/cucumber-reports.html"
+//               ,"usage:target/cucumber-usage.json"
+//               , "json:Reports/CucumberTestReport.json"
+//              ,  "rerun:Reports/rerun.txt"
               }
 		//       , tags = "@Ignore"
        , monochrome = true
@@ -31,6 +37,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	public static WebDriver driver;
 	public String baseurl = "https://www.google.com";
 	String projectpath = System.getProperty("user.dir");
+	
+	
 
     @BeforeClass(alwaysRun = true)
     public void setUpClass() throws InterruptedException {
@@ -54,6 +62,12 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 //        }
 //        return testNGCucumberRunner.provideScenarios();
 //    }
+    
+//    @AfterStep 
+//    public void reporterlog() {
+//    	Reporter.log(Step.class.getName());
+//    }
+    
     
     @AfterClass(alwaysRun = true)
     public void tearDownClass() {
