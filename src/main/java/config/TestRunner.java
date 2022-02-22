@@ -3,12 +3,13 @@ package config;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 
-import io.cucumber.core.gherkin.Step;
-import io.cucumber.java.AfterStep;
+import com.google.common.collect.ImmutableMap;
+import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
@@ -16,8 +17,10 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
+
+
 @CucumberOptions(
-		dryRun = true,
+//		dryRun = true,
 		publish = true,
         features = "src\\test\\java\\Features\\",
         glue = {"StepDefinations"},
@@ -39,8 +42,22 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	String projectpath = System.getProperty("user.dir");
 	
 	
+	 
+	 @BeforeSuite
+	    void setAllureEnvironment() {
+	        allureEnvironmentWriter(
+	                ImmutableMap.<String, String>builder()
+	                        .put("Browser", "Chrome")
+	                        .put("Browser.Version", "98.0.4758.102")
+	                        .put("URL", "http://www.google.com")
+	                        .build(), System.getProperty("user.dir")
+	                        + "/allure-results/");
+	    }
 
-    @BeforeClass(alwaysRun = true)
+
+
+
+	@BeforeClass(alwaysRun = true)
     public void setUpClass() throws InterruptedException {
 //        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
         System.setProperty("webdriver.chrome.driver", projectpath +"\\driver\\chromedriver.exe");
@@ -75,6 +92,15 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     	driver.close();
     	driver.quit();
     }
+    
+//    @AfterClass(alwaysRun = true)
+//    public void af(Scenario scenario) throws InterruptedException, IOException, IllegalMonitorStateException
+//    {	
+//        if(scenario.isFailed())
+//        {	
+//            Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+//        }
+//    }
     
 
 }
