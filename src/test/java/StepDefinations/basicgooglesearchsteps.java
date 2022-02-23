@@ -47,7 +47,7 @@ public class basicgooglesearchsteps extends TestRunner {
 	@Then("it will start search with keyword")
 	@Step("it will start search with keyword")
 	public void it_will_start_search_with_keyword() throws InterruptedException {		
-		Assert.assertEquals( "Datagardener LTD" ,  gs.searchbox());
+		Assert.assertEquals( "Crowe" ,  gs.searchbox());
 		gs.submit();
 		Thread.sleep(5000);
 	}

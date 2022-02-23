@@ -16,8 +16,6 @@ import com.google.common.collect.ImmutableMap;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-
-
 @CucumberOptions(
 //		dryRun = true,
 		publish = true, features = "src\\test\\java\\Features\\", glue = { "StepDefinations" }, plugin = { "pretty"
@@ -29,19 +27,14 @@ import io.cucumber.testng.CucumberOptions;
 		// , tags = "@Ignore"
 		, monochrome = true)
 
-
-
 public class TestRunner extends AbstractTestNGCucumberTests {
 //	private TestNGCucumberRunner testNGCucumberRunner;
 	public static WebDriver driver;
 	public String baseurl = "https://www.google.com";
-	String projectpath = System.getProperty("user.dir");
+	static String projectpath = System.getProperty("user.dir");
 	public static ThreadLocal<WebDriver> tdriver = new ThreadLocal<WebDriver>();
-	String filename =new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-	
-	
-	
-	
+	String filename = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+
 //	public Properties initialize_Properties() {
 //		prop = new Properties();
 //		try {
@@ -56,17 +49,13 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 //
 //		return prop;
 //	}
-	
-	 @BeforeSuite
-	    void setAllureEnvironment() {
-	        allureEnvironmentWriter(
-	                ImmutableMap.<String, String>builder()
-	                        .put("Browser", "Chrome")
-	                        .put("Browser.Version", "70.0.3538.77")
-	                        .put("URL", "http://google.com")
-	                        .build(),
-	                        projectpath +  "/target/allure-results/");
-	    }
+
+	@BeforeSuite
+	public static void setAllureEnvironment() {
+		allureEnvironmentWriter(ImmutableMap.<String, String>builder().put("Environment", "Test Server").put("Project", "java_cucumber_testNG_Allure")
+				.put("Browser", "Chrome").put("Browser.Version", "98.0.4758.102").put("URL", "http://google.com")
+				.put("Author", "Sunil Kumar").build(), projectpath + "/target/allure-results/");
+	}
 
 	public static synchronized WebDriver getDriver() {
 		return tdriver.get();
@@ -80,8 +69,6 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		driver.manage().window().maximize();
 		Thread.sleep(1000);
 	}
-	
-
 
 //    @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 //   public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
@@ -97,7 +84,6 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 //      return testNGCucumberRunner.provideScenarios();}
 // 
 //	
-	
 
 	@AfterClass(alwaysRun = true)
 	public void tearDownClass() {
@@ -107,9 +93,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		driver.quit();
 	}
 
-	
 	public String getScreenshot() {
-		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String path = projectpath + "\\Screenshots\\" + filename + "_" + System.currentTimeMillis() + ".png";
 		File destination = new File(path);
 		try {
@@ -119,8 +104,5 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		}
 		return path;
 	}
-
-
-	
 
 }

@@ -2,30 +2,34 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="17009" started-at="2022-02-23T20:14:25 IST" finished-at="2022-02-23T20:14:42 IST">
+  <suite name="Suite" duration-ms="17191" started-at="2022-02-23T20:39:22 IST" finished-at="2022-02-23T20:39:40 IST">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:StepDefinations.basicgooglesearchsteps@6a74d228]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:StepDefinations.basicgooglesearchsteps@4905c46b]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test" duration-ms="17009" started-at="2022-02-23T20:14:25 IST" finished-at="2022-02-23T20:14:42 IST">
+    <test name="Test" duration-ms="17191" started-at="2022-02-23T20:39:22 IST" finished-at="2022-02-23T20:39:40 IST">
       <class name="StepDefinations.basicgooglesearchsteps">
-        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:StepDefinations.basicgooglesearchsteps@6a74d228]" name="setUpClass" is-config="true" duration-ms="666" started-at="2022-02-23T20:14:25 IST" finished-at="2022-02-23T20:14:26 IST">
+        <test-method status="PASS" signature="setAllureEnvironment()[pri:0, instance:StepDefinations.basicgooglesearchsteps@4905c46b]" name="setAllureEnvironment" is-config="true" duration-ms="142" started-at="2022-02-23T20:39:22 IST" finished-at="2022-02-23T20:39:22 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setAllureEnvironment -->
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:StepDefinations.basicgooglesearchsteps@4905c46b]" name="setUpClass" is-config="true" duration-ms="609" started-at="2022-02-23T20:39:22 IST" finished-at="2022-02-23T20:39:23 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@40edc64e]]>
+                <![CDATA[org.testng.TestRunner@615e7fe7]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:StepDefinations.basicgooglesearchsteps@6a74d228]" name="setUpClass" is-config="true" duration-ms="3604" started-at="2022-02-23T20:14:26 IST" finished-at="2022-02-23T20:14:29 IST">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:StepDefinations.basicgooglesearchsteps@4905c46b]" name="setUpClass" is-config="true" duration-ms="3654" started-at="2022-02-23T20:39:23 IST" finished-at="2022-02-23T20:39:27 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:StepDefinations.basicgooglesearchsteps@6a74d228]" name="runScenario" duration-ms="7847" started-at="2022-02-23T20:14:29 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-02-23T20:14:37 IST">
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:StepDefinations.basicgooglesearchsteps@4905c46b]" name="runScenario" duration-ms="8016" started-at="2022-02-23T20:39:27 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-02-23T20:39:35 IST">
           <params>
             <param index="0">
               <value>
@@ -41,7 +45,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:StepDefinations.basicgooglesearchsteps@6a74d228]" name="tearDownClass" is-config="true" duration-ms="4736" started-at="2022-02-23T20:14:37 IST" finished-at="2022-02-23T20:14:42 IST">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:StepDefinations.basicgooglesearchsteps@4905c46b]" name="tearDownClass" is-config="true" duration-ms="4750" started-at="2022-02-23T20:39:35 IST" finished-at="2022-02-23T20:39:40 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
