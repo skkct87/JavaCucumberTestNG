@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Feb 22 11:19:52 IST 2022</td>
+<td>Started on:</td><td>Wed Feb 23 14:56:49 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>5 seconds (5052 ms)</td>
+<tr><td>Total time:</td><td>17 seconds (17395 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,18 +67,37 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='StepDefinations.basicgooglesearchsteps.get_the_title_of_website()'><b>get_the_title_of_website</b><br>Test class: StepDefinations.basicgooglesearchsteps<br>Test method: Get the title of Website</td>
-<td></td>
-<td>0</td>
-<td>StepDefinations.basicgooglesearchsteps@198ef2ce</td></tr>
+<td title='StepDefinations.basicgooglesearchsteps.runScenario()'><b>runScenario</b><br>Test class: StepDefinations.basicgooglesearchsteps<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Want to search a company", "Optional[Basic serach on Google]"</td>
+<td><div><pre>java.lang.AssertionError: expected [Datagardener LTD - Google Search] but found [Datagardener]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+	at org.testng.Assert.assertEquals(Assert.java:122)
+	at org.testng.Assert.assertEquals(Assert.java:629)
+	at org.testng.Assert.assertEquals(Assert.java:639)
+	at StepDefinations.basicgooglesearchsteps.get_the_title_of_website(basicgooglesearchsteps.java:64)
+	at ?.Get the title of website(file:///D:/java_auto/java_cucumber_testNG/src/test/java/Features/google.feature:7)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1722389892", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1722389892'><pre>java.lang.AssertionError: expected [Datagardener LTD - Google Search] but found [Datagardener]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+	at org.testng.Assert.assertEquals(Assert.java:122)
+	at org.testng.Assert.assertEquals(Assert.java:629)
+	at org.testng.Assert.assertEquals(Assert.java:639)
+	at StepDefinations.basicgooglesearchsteps.get_the_title_of_website(basicgooglesearchsteps.java:64)
+	at ?.Get the title of website(file:///D:/java_auto/java_cucumber_testNG/src/test/java/Features/google.feature:7)
+</pre></div></td>
+<td>8</td>
+<td>StepDefinations.basicgooglesearchsteps@2b4c3c29</td></tr>
 </table><p>
 </body>
 </html>

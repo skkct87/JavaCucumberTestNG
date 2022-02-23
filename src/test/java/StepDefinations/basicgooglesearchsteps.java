@@ -1,17 +1,21 @@
 package StepDefinations;
 
 
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 
 import config.TestRunner;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Step;
-import io.qameta.allure.Story;
+import io.cucumber.java.en.*;
+import io.qameta.allure.*;
 import pageObject.googlebasicsearch;
+
+@Listeners(Listener.ListenerTest.class)
+
+
+
+
+
+
 
 public class basicgooglesearchsteps extends TestRunner {
 
@@ -22,27 +26,29 @@ public class basicgooglesearchsteps extends TestRunner {
 	@Description("Company Search via Google Search")
 
 	@Step("I have chrome browser")
-	@Given("I have chrome browser")
+	@Given("I have chrome browser")	
 	public void i_have_chrome_browser() {
-		System.out.println("We are using Chrome Browser");
-//			Reporter.log("We are using Chrome Browser");
-		driver.navigate().to(baseurl);
+				System.out.println("We are using Chrome Browser");
+		driver.navigate().to(baseurl);		
+		Assert.assertEquals(  "https://www.google.com/" ,driver.getCurrentUrl());
+//		driver.navigate().to("www.tech.com");
+//		Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 	}
 
 	
 	@Step("i search insert company name in search box")
 	@When("i search insert company name in search box")
 	public void i_search_insert_company_name_in_search_box() {
-		gs.iosearch("Datagardener LTD");
-//		   Reporter.log("i search insert company name in search box");
+		gs.iosearch("Datagardener LTD");		
+		//		   Reporter.log("i search insert company name in search box");
 	}
 
 	
 	@Then("it will start search with keyword")
 	@Step("it will start search with keyword")
-	public void it_will_start_search_with_keyword() throws InterruptedException {
+	public void it_will_start_search_with_keyword() throws InterruptedException {		
+		Assert.assertEquals( "Datagardener LTD" ,  gs.searchbox());
 		gs.submit();
-//		   Reporter.log("it will start search with keyword");
 		Thread.sleep(5000);
 	}
 
@@ -53,5 +59,7 @@ public class basicgooglesearchsteps extends TestRunner {
 		String title = driver.getTitle();
 //		  Reporter.log("Get the title of website");
 		System.out.println("Title of website is :  " + title);
+//		Assert.assertEquals( "Datagardener LTD - Google Search" , title);
+//		Assert.assertEquals( "Datagardener" , title);
 	}
 }
