@@ -7,26 +7,24 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
+import org.testng.Reporter;
 import config.TestRunner;
 import io.qameta.allure.Allure;
 
 
 public class ListenerTest extends TestRunner implements ITestListener {
+	
 
-	private static String getTestMethodName(ITestResult result) {
-		return result.getMethod().getConstructorOrMethod().getName();
-
-	}
 
 	@Override
 	public void onFinish(ITestContext Result) {
+		Reporter.log("Test Process Finished ");
 		System.out.println("Test Process Finished ");
 	}
 
 	@Override
 	public void onStart(ITestContext Result) {
-
+		Reporter.log("Test Process Starting ");
 		System.out.println("Test Process Starting ");
 
 	}
@@ -38,7 +36,8 @@ public class ListenerTest extends TestRunner implements ITestListener {
 
 	@Override
 	public void onTestFailure(ITestResult Result) {
-		System.out.println("TestFailure method " + getTestMethodName(Result) + " failed");
+		Reporter.log("Test Case Failed");
+		System.out.println("Test Case Failed");
 		Allure.addAttachment("Failed Screenshot",
 				new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 //		getScreenshot();
@@ -47,23 +46,20 @@ public class ListenerTest extends TestRunner implements ITestListener {
 
 	@Override
 	public void onTestSkipped(ITestResult Result) {
-		{
-			System.out.println("The name of the testcase Skipped is :" + getTestMethodName(Result));
-		}
-
-	}
+				}
 
 	@Override
 	public void onTestStart(ITestResult Result) {
-		{
-			System.out.println(Result.getName() + " test case started");
-		}
+		Reporter.log(Result.getName() + " Test Case Excution Started");
+			System.out.println("Test Case Excution Started");
+		
 
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult Result) {
-		System.out.println("The testcase passed is :" + getTestMethodName(Result));
+		Reporter.log("Test Passed");
+		System.out.println("Test Passed");
 
 	}
 }

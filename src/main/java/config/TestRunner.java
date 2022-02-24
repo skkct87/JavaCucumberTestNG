@@ -4,37 +4,39 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
-
 import com.google.common.collect.ImmutableMap;
-
-import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.FeatureWrapper;
+import io.cucumber.testng.PickleWrapper;
+import io.cucumber.testng.TestNGCucumberRunner;
+import io.qameta.allure.Step;
 
 @CucumberOptions(
 //		dryRun = true,
 		publish = true, features = "src\\test\\java\\Features\\", glue = { "StepDefinations" }, plugin = { "pretty"
-//        		 , "html:target/cucumber-reports.html"
-//               ,"usage:target/cucumber-usage.json"
+				,"html:target/cucumber-report/cucumber.html" 
+//               ,"usage"
 //               , "json:Reports/CucumberTestReport.json"
 //              ,  "rerun:Reports/rerun.txt"
 		}
 		// , tags = "@Ignore"
 		, monochrome = true)
 
-public class TestRunner extends AbstractTestNGCucumberTests {
-//	private TestNGCucumberRunner testNGCucumberRunner;
+//public class TestRunner extends AbstractTestNGCucumberTests {
+public class TestRunner {
+	private TestNGCucumberRunner testNGCucumberRunner;
 	public static WebDriver driver;
-	public String baseurl = "https://www.google.com";
-	static String projectpath = System.getProperty("user.dir");
-	public static ThreadLocal<WebDriver> tdriver = new ThreadLocal<WebDriver>();
+	public static String baseurl = "https://www.google.com";
+	static String projectpath = System.getProperty("user.dir");	
 	String filename = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-
+	
+	
+	
 //	public Properties initialize_Properties() {
 //		prop = new Properties();
 //		try {
@@ -51,48 +53,52 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 //	}
 
 	@BeforeSuite
+	@Step("Allure Environment Setup")
 	public static void setAllureEnvironment() {
-		allureEnvironmentWriter(ImmutableMap.<String, String>builder().put("Environment", "Test Server").put("Project", "java_cucumber_testNG_Allure")
-				.put("Browser", "Chrome").put("Browser.Version", "98.0.4758.102").put("URL", "http://google.com")
-				.put("Author", "Sunil Kumar").build(), projectpath + "/target/allure-results/");
+		allureEnvironmentWriter(ImmutableMap.<String, String>builder().put("Environment", "Test Server")
+//				.put("OS Name", os)
+				.put("Project", "java_cucumber_testNG_Allure").put("Browser", "Chrome")
+				.put("Browser.Version", "98.0.4758.102").put("URL", baseurl).put("Author", "Sunil Kumar").build(),
+				projectpath + "/target/allure-results/");
 	}
 
-	public static synchronized WebDriver getDriver() {
-		return tdriver.get();
-	}
+//	public static synchronized WebDriver getDriver() {
+//		return tdriver.get();
+//	}
 
 	@BeforeClass(alwaysRun = true)
+	@Step("Browser Open & Ready for Test Execution")
 	public void setUpClass() throws InterruptedException {
-//        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
 		System.setProperty("webdriver.chrome.driver", projectpath + "\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		Thread.sleep(1000);
 	}
 
-//    @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
-//   public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
-//       testNGCucumberRunner.runScenario(pickle.getPickle());
-//    }
+	@Test(testName = "scenario", groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenario")
+	public void Scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
+		testNGCucumberRunner.runScenario(pickle.getPickle());
+	}
 
-//   @DataProvider
-//    public Object[][] getFeatures()
-//   {
-//       if(testNGCucumberRunner == null){
-//            testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-//        }
-//      return testNGCucumberRunner.provideScenarios();}
-// 
-//	
+	@DataProvider
+	public Object[][] scenario() {
+		if (testNGCucumberRunner == null) {
+			testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+		}
+		return testNGCucumberRunner.provideScenarios();
+	}
 
 	@AfterClass(alwaysRun = true)
+	@Step("Test Process Completed and Now Browser Closing")
 	public void tearDownClass() {
-//        testNGCucumberRunner.finish();
+		testNGCucumberRunner.finish();
 
 		driver.close();
 		driver.quit();
 	}
-
+	
+	
 	public String getScreenshot() {
 		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String path = projectpath + "\\Screenshots\\" + filename + "_" + System.currentTimeMillis() + ".png";
