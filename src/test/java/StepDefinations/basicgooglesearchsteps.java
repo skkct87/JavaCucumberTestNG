@@ -68,7 +68,7 @@ public class basicgooglesearchsteps extends TestRunner {
 //		  Reporter.log("Get the title of website");
 		System.out.println("Title of website is :  " + title);
 		try {
-		Assert.assertEquals( "Datagardener LTD - Google Searc" , title);}
+		Assert.assertEquals( "Datagardener LTD - Google Search" , title);}
 		catch (Exception e ){
 			System.out.println("Title not Matched" );
 			e.printStackTrace();
